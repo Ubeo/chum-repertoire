@@ -1,0 +1,21 @@
+global-fonts:
+  css:
+    theme:
+      //fonts.googleapis.com/css?family=Raleway:400,600,700: { type: external }
+      css/style.css: {}
+global-css:
+  css:
+    theme:
+      css/style.css: {}
+      css/font-awesome.min.css: {}
+      css/style_desktop.css: { media: screen and (min-width: 1002px) }
+      css/print.css: { media: print }
+global-js:
+  js:
+    js/custom.js: {}
+    js/jquery.localScroll.min.js: {}
+    js/jquery.scrollTo.min.js: {}
+    js/css3-mediaqueries.js: {}
+    js/jquery.bxslider.min.js: {}
+  dependencies:
+    - core/jquery
