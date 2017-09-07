@@ -27,7 +27,7 @@ class OngletsRecherche extends BlockBase {
 		if ( $liste_categories_principales ) {
 			foreach ( $liste_categories_principales as $categorie_principale ) {
 				$liste_enfants = $this->getChildCategories($categorie_principale->tid);
-				$html .= '	<div id="' . $categorie_principale->vid . '">
+				$html .= '	<div id="term-' . $categorie_principale->tid . '">
   	                            <div class="onglet">' . $categorie_principale->name . '</div>';
 				if($liste_enfants) {
 					$html .= '<ul>';

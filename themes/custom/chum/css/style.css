@@ -395,7 +395,7 @@ a.all-link:before {
     Head / Branding
 \*--------------------*/
 #header {
-	background: url("../images/bg-header-mobi.png") left bottom repeat-x;
+	background: url("../images/bg-header-mobi.png") left top repeat-x;
 }
 #header .section {
 	position: relative;
@@ -630,7 +630,11 @@ a.all-link:before {
 	margin-left: -8%;
 	border-top: solid 12px #eeeeee;
 	border-bottom: solid 12px #eeeeee;
-	background: #004071;
+	background: #224c71;
+	background: -moz-linear-gradient(-45deg, #224c71 0%, #1e3951 100%);
+	background: -webkit-linear-gradient(-45deg, #224c71 0%, #1e3951 100%);
+	background: linear-gradient(135deg, #224c71 0%, #1e3951 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#224c71', endColorstr='#1e3951', GradientType=1);
 }
 #repertoire-form {
 	zoom: 1;
@@ -662,6 +666,50 @@ a.all-link:before {
 }
 #block-barrederecherche label input  {
 	margin-right: 8px;
+}
+
+/*--------------------*\
+    Onglets Recherche
+\*--------------------*/
+#block-ongletsderecherche .onglet {
+	display: block;
+	width: 102%;
+	margin-left: -8%;
+	color: #fff;
+	font-size: 15px;
+	line-height: 20px;
+	font-weight: 600;
+	text-transform: uppercase;
+	padding: 9px 7% 8px 7%;
+	border-top: solid 1px #265d86;
+	border-bottom: solid 1px #001425;
+	cursor: pointer;
+	background: #224c71;
+	background: -moz-linear-gradient(-45deg, #224c71 0%, #1e3951 100%);
+	background: -webkit-linear-gradient(-45deg, #224c71 0%, #1e3951 100%);
+	background: linear-gradient(135deg, #224c71 0%, #1e3951 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#224c71', endColorstr='#1e3951', GradientType=1);
+}
+#block-ongletsderecherche ul {
+	display: none;
+	width: 116%;
+	margin-left: -8%;
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none;
+}
+#block-ongletsderecherche ul li {
+	display: block;
+	color: #161615;
+	font-size: 13px;
+	line-height: 18px;
+	font-weight: 600;
+	padding: 9px 7% 8px 10%;
+	margin-bottom: 0;
+	border-top: solid 1px #d7d7d7;
+	border-bottom: solid 1px #c4c4c4;
+	cursor: pointer;
+	background: #d3d3d3;
 }
 /*--------------------*\
     Fiches
@@ -720,7 +768,6 @@ article.node--type-fiches-repertoire .titre-section {
 #sidebar-first .section {
 	padding-left: 7%;
 	padding-right: 7%;
-
 }
 #sidebar-first .section div div {
 	margin-bottom: 20px;
@@ -728,7 +775,9 @@ article.node--type-fiches-repertoire .titre-section {
 	-moz-box-shadow: 0px 3px 13px #f0f0f0;
 	box-shadow: 0px 3px 13px #f0f0f0;
 }
-
+.body-hide .titre-section {
+	display: none;
+}
 /*--------------------*\
     Footer
 \*--------------------*/
@@ -829,6 +878,17 @@ ul.arrow-list li:before {
 	.absolute_right {
 		right: 4%;
 	}
+	#block-barrederecherche {
+		width: 100%;
+		padding: 12px 5%;
+		margin-left: -5%;
+	}
+	#block-ongletsderecherche .onglet {
+		width: 100%;
+		padding: 8px 5%;
+		margin-left: -5%;
+	}
+
 
 	/*--------------------*\
 		Footer

@@ -1,5 +1,4 @@
 @media screen and (min-width: 1002px) {
-
 	#header {
 		background: url("../images/bg-header.png") center bottom no-repeat;
 	}
@@ -66,6 +65,16 @@
 		border-bottom: 1px solid #0b4170;
 		color: #0b4170;
 		background: transparent;
+	}
+	#block-barrederecherche {
+		width: 90%;
+		padding: 12px 5%;
+		margin-left: 0;
+	}
+	#block-ongletsderecherche .onglet {
+		width: 90%;
+		padding: 8px 5%;
+		margin-left: 0;
 	}
 }
 
