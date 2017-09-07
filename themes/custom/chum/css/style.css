@@ -637,12 +637,16 @@ a.all-link:before {
 #repertoire-form:after {
 	clear: both;
 }
+#block-barrederecherche #mot-clef {
+	width: 82%;
+	float: left;
+}
 #repertoire-form #form-submit {
 	color: #fff;
-	float: right;
-}
-#block-barrederecherche #mot-clef {
-	width: 78%;
+	font-size: 28px;
+	display: inline-block;
+	float: left;
+	margin: 3px 0 0 4%;
 }
 #block-barrederecherche label {
 	display: inline-block;
@@ -696,7 +700,7 @@ article.node--type-fiches-repertoire .titre-section {
 	-o-background-size: 20px 17px;
 	background-size: 20px 17px;
 }
-.contact {
+.contactez-nous {
 	padding-left: 25px;
 	background: url("../images/ico_phone.png") 0 2px no-repeat;
 	-webkit-background-size: 20px 19px;

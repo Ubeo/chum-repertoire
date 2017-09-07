@@ -48,7 +48,7 @@ class BarreRechercheBlock extends BlockBase {
 			= "
   	<form method='post' action='/' id='repertoire-form'>
   	    <input type='text' placeholder='RECHERCHE' id='mot-clef' name='mot-clef' value='" . $mot_clef . "' />
-  	    <a href='javascript:;' id='form-submit'>LOUPE</a>
+  	    <a href='javascript:;' id='form-submit'><i class=\"fa fa-search\" aria-hidden=\"true\"></i></a>
   	    <label><input type='checkbox' name='tous' value='1' " . ($tous ? 'checked="checked"' : '') . ">TOUS</label>
   	    <label><input type='checkbox' name='cliniques' value='1' " . ($cliniques ? 'checked="checked"' : '') . ">CLINIQUES</label>
   	    <label><input type='checkbox' name='unites_soins' value='1' " . ($unites_soins ? 'checked="checked"' : '') . ">UNITÉS DE SOINS</label>
