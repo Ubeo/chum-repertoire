@@ -16,6 +16,24 @@ use Drupal\Core\Session\AccountInterface;
  * )
  */
 class BarreRechercheBlock extends BlockBase {
+
+	protected function getParentCategories() {
+		$language      = \Drupal::languageManager()->getCurrentLanguage()->getId();
+		$terms         = \Drupal::entityManager()->getStorage( 'taxonomy_term' )->loadTree( "categories_des_fiches" );
+		$liste_parents = array();
+		if ( $terms ) {
+			foreach ( $terms as $term ) {
+				if ( $term->depth == 0 && $term->langcode == $language ) {
+					$liste_parents[ $term->tid ] = $term;
+				}
+			}
+		}
+
+		return $liste_parents;
+	}
+
+
+
 	/**
 	 * {@inheritdoc}
 	 */
@@ -25,35 +43,45 @@ class BarreRechercheBlock extends BlockBase {
 			$mot_clef = htmlspecialchars( $_POST['mot-clef'] );
 		}
 
-		$tous = $cliniques = $unites_soins = $services_diagnostiques = false;
+		$tous = false;
 
-		if ( isset( $_POST['tous'] ) && $_POST['tous'] == 1 ) {
+		$categories_parents = $this->getParentCategories();
+
+		if ( isset( $_POST['tous'] ) && $_POST['tous'] == 'tous' ) {
 			$tous = true;
 		}
 
-		if ( isset( $_POST['cliniques'] ) && $_POST['cliniques'] == 1 ) {
-			$cliniques = true;
+
+		if ( $categories_parents ) {
+			foreach ( $categories_parents as $categories_parent ) {
+				$slug_temp = preg_replace('/[^a-zA-Z0-9]/', '_', mb_strtolower($categories_parent->name));
+				if(isset($_POST[$slug_temp]) && (int)$_POST[$slug_temp] == $categories_parent->tid) {
+					$$slug_temp = true;
+				}
+			}
 		}
 
-		if ( isset( $_POST['unites_soins'] ) && $_POST['unites_soins'] == 1 ) {
-			$unites_soins = true;
+
+		$html = "
+  	            <form method='post' action='/' id='repertoire-form'>
+			        <input type='text' placeholder='RECHERCHE' id='mot-clef' name='mot-clef' value='" . $mot_clef . "' />
+			        <a href='javascript:;' id='form-submit'><i class=\"fa fa-search\" aria-hidden=\"true\"></i></a>
+			        <label><input type='checkbox' name='tous' value='tous' " . ( $tous ? 'checked="checked"' : '' ) . ">TOUS</label>
+			        ";
+
+		if ( $categories_parents ) {
+			foreach ( $categories_parents as $categories_parent ) {
+				$slug_temp = preg_replace('/[^a-zA-Z0-9]/', '_', mb_strtolower($categories_parent->name));
+				if($$slug_temp) {
+					$checked = "checked='checked'";
+				} else {
+					$checked = '';
+				}
+				$html .= "<label><input type='checkbox' name='" . $slug_temp . "' value='" . $categories_parent->tid . "' $checked >" . mb_strtoupper($categories_parent->name) . "</label>";
+			}
 		}
 
-		if ( isset( $_POST['services_diagnostiques'] ) && $_POST['services_diagnostiques'] == 1 ) {
-			$services_diagnostiques = true;
-		}
-
-
-		$html
-			= "
-  	<form method='post' action='/' id='repertoire-form'>
-  	    <input type='text' placeholder='RECHERCHE' id='mot-clef' name='mot-clef' value='" . $mot_clef . "' />
-  	    <a href='javascript:;' id='form-submit'><i class=\"fa fa-search\" aria-hidden=\"true\"></i></a>
-  	    <label><input type='checkbox' name='tous' value='1' " . ($tous ? 'checked="checked"' : '') . ">TOUS</label>
-  	    <label><input type='checkbox' name='cliniques' value='1' " . ($cliniques ? 'checked="checked"' : '') . ">CLINIQUES</label>
-  	    <label><input type='checkbox' name='unites_soins' value='1' " . ($unites_soins ? 'checked="checked"' : '') . ">UNITÉS DE SOINS</label>
-  	    <label><input type='checkbox' name='services_diagnostiques' value='1' " . ($services_diagnostiques ? 'checked="checked"' : '') . ">SERVICES DIAGNOSTIQUES</label>
-	</form>";
+		$html .= "</form>";
 
 		return [
 			'#markup'   => $this->t( $html ),
