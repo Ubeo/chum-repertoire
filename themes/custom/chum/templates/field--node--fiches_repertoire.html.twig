@@ -39,12 +39,12 @@
 
 
 <div{{ attributes }}>
-    <div{{ title_attributes }}>{{ label }}</div>
+    <div class="titre-section">{{ label }}</div>
     {% if multiple %}
     <div>
         {% endif %}
         {% for item in items %}
-            <div{{ item.attributes }}>{{ item.content }}XXXXXXX</div>
+            <div{{ item.attributes }}>{{ item.content }}</div>
         {% endfor %}
         {% if multiple %}
     </div>

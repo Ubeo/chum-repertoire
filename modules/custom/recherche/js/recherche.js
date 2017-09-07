@@ -1,3 +1,9 @@
-/**
- * Created by pascalmercier on 17-08-28.
- */
+jQuery(function($) {
+    $("#repertoire-form").submit(function() {
+        // Validations
+    });
+
+    $("#form-submit").click(function() {
+        $("#repertoire-form").submit();
+    });
+});
