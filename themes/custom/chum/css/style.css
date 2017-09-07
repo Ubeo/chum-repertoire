@@ -394,12 +394,17 @@ a.all-link:before {
 /*--------------------*\
     Head / Branding
 \*--------------------*/
+#header {
+	background: url("../images/bg-header-mobi.png") left bottom repeat-x;
+}
+#header .section {
+	position: relative;
+}
 #block-chum-branding {
 	padding-left: 7%;
 	padding-right: 7%;
 	padding-top: 10px;
 	padding-bottom: 4px;
-	background: url("../images/bg-header-mobi.png") bottom left repeat-x;
 }
 .site-logo {
 	display: block;
@@ -748,10 +753,10 @@ article.node--type-fiches-repertoire .titre-section {
 #block-pieddepagesociauxetsignature div {
 	padding-left: 7%;
 	padding-right: 7%;
-	padding-top: 25px;
+	margin-top: 25px;
 }
 #block-pieddepageliensrapides1 div , #block-pieddepageliensrapides2 div {
-	padding-top: 25px;
+	margin-top: 25px;
 }
 .tbl_footer_infos,
 .tbl_socials {
