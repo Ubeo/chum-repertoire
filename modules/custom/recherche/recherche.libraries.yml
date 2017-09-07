@@ -1,0 +1,6 @@
+recherche:
+  version: 1.x
+  js:
+    js/recherche.js: {}
+  dependencies:
+    - core/jquery

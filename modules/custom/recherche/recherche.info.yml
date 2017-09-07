@@ -1,0 +1,7 @@
+name: Moteur de recherche / Fiches répertoire
+description: Génère les blocs pour le moteur de recherche des fiches répertoires
+core: 8.x
+package: CHUM
+dependencies:
+- block
+type: module
