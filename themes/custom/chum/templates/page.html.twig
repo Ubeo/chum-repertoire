@@ -57,6 +57,8 @@
         {{ page.secondary_menu }}
         {{ page.header }}
         {{ page.primary_menu }}
+
+
       </div>
     </header>
     {% if page.highlighted %}
@@ -68,6 +70,9 @@
     {% endif %}
     <div id="main-wrapper" class="layout-main-wrapper layout-container clearfix">
       <div id="main" class="layout-main clearfix">
+          {% if node.field_banniere is not empty %}
+            <img src="{{ file_url(node.field_banniere.entity.uri.value)}}" />
+          {% endif %}
           {{ page.breadcrumb }}
           {% if page.featured_top %}
             <div class="featured-top">
