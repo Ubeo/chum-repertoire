@@ -6,7 +6,6 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
-
 /**
  * Provides a block with a simple text.
  *
@@ -33,7 +32,7 @@ class OngletsRecherche extends BlockBase {
                 $html .= '</div>';
             }
             $html .= '</div>';
-
+			$aliasManager = \Drupal::service('path.alias_manager');
 		    foreach ( $liste_categories_principales as $categorie_principale ) {
 				$liste_enfants = $this->getChildCategories($categorie_principale->tid);
 				$html .= '	<div class="term-' . $categorie_principale->tid . '">
@@ -41,7 +40,9 @@ class OngletsRecherche extends BlockBase {
 				if($liste_enfants) {
 					$html .= ' <ul class="term-' . $categorie_principale->tid . '">';
 					foreach ( $liste_enfants as $enfant ) {
-						$html .= '<li>' . $enfant->name . '</li>';
+
+						$alias = $aliasManager->getAliasByPath('/taxonomy/term/' . $enfant->tid);
+						$html .= '<li><a href="' . $alias . '">' . $enfant->name . '</a></li>';
 					}
 					$html .= '</ul>';
 				}
