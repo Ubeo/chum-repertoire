@@ -702,6 +702,9 @@ a.all-link:before {
 /*--------------------*\
     Onglets Recherche
 \*--------------------*/
+.onglets-wrapper {
+	display: none;
+}
 #block-ongletsderecherche .onglet {
 	display: block;
 	width: 102%;
@@ -798,10 +801,9 @@ article.node--type-fiches-repertoire .titre-section {
 /*--------------------*\
     Pages
 \*--------------------*/
-/*body.path-frontpage #block-chum-page-title,
-body.path-frontpage #block-chum-content {
+body.path-frontpage #content #block-chum-page-title {
 	display: none;
-}*/
+}
 #content .section,
 #sidebar-first .section,
 .featured-top {
