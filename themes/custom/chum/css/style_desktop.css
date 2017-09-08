@@ -131,7 +131,7 @@
 	#block-ongletsderecherche .onglet {
 		display: none;
 	}
-	#block-ongletsderecherche .tab-category.tab_on .onglet {
+	#block-ongletsderecherche .onglet.tab_on {
 		color: #004071;
 		border-top: solid 1px #e9e9e9;
 		border-bottom: solid 1px #e9e9e9;

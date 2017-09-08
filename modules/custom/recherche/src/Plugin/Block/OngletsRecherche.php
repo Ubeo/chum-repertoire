@@ -28,7 +28,7 @@ class OngletsRecherche extends BlockBase {
             $html .= '<div class="onglets-wrapper clearfix">';
             foreach ( $liste_categories_principales as $categorie_principale ) {
                 $html .= '	<div class="tab-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '">
-                                <div class="onglet">' . $categorie_principale->name . '</div>';
+                                <div class="tab-category onglet" rel="' . $categorie_principale->tid . '">' . $categorie_principale->name . '</div>';
                 $html .= '</div>';
             }
             $html .= '</div>';
@@ -36,7 +36,7 @@ class OngletsRecherche extends BlockBase {
 		    foreach ( $liste_categories_principales as $categorie_principale ) {
 				$liste_enfants = $this->getChildCategories($categorie_principale->tid);
 				$html .= '	<div class="tab-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '">
-  	                            <div class="onglet">' . $categorie_principale->name . '</div>';
+  	                            <div class="tab-category onglet" rel="' . $categorie_principale->tid . '">' . $categorie_principale->name . '</div>';
 				if($liste_enfants) {
 					$html .= ' <ul class="list-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '">';
 					foreach ( $liste_enfants as $enfant ) {
