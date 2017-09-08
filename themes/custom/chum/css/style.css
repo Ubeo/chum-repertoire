@@ -280,18 +280,22 @@ p.right {
 	text-align: right;
 	float: none;
 }
+.block-title {
+	font: italic 600 12px/22px "Raleway", Arial, Helvetica, sans-serif;
+	margin: 0;
+	color: #ffffff;
+	padding: 3px 10px 3px 15px;
+	text-transform: uppercase;
+}
+/*.block.alert-info .block-title {
+	font: italic 600 9px/22px "Raleway", Arial,Helvetica, sans-serif;
+}
 .big-title {
 	font-size: 18px;
 	margin-left: 5px;
-}
-.block-title {
-	font: italic 600 12px/22px "Raleway", Arial, Helvetica, sans-serif;
-}
-.block.alert-info .block-title {
-	font: italic 600 9px/22px "Raleway", Arial,Helvetica, sans-serif;
-}
+}*/
 .espacement .content {
-	padding: 10px 15px;
+	padding: 10px 15px 1px 15px;
 }
 .black {
 	color: #000;
@@ -682,7 +686,6 @@ a.all-link:before {
 #block-barrederecherche label input  {
 	margin-right: 8px;
 }
-
 /*--------------------*\
     Onglets Recherche
 \*--------------------*/
@@ -784,7 +787,7 @@ article.node--type-fiches-repertoire .titre-section {
 	padding-left: 7%;
 	padding-right: 7%;
 }
-#sidebar-first .section div div {
+#sidebar-first .block-block {
 	margin-bottom: 20px;
 	-webkit-box-shadow: 0px 3px 13px #f0f0f0;
 	-moz-box-shadow: 0px 3px 13px #f0f0f0;
@@ -903,8 +906,19 @@ ul.arrow-list li:before {
 		padding: 8px 5%;
 		margin-left: -5%;
 	}
-
-
+	#sidebar-first .block-block {
+		width: 48%;
+		float: left;
+		margin-left: 4%;
+	}
+	#sidebar-first .block-block:nth-child(odd) {
+		clear: left;
+		margin-left: 0;
+	}
+	#block-barrederecherche label {
+		clear: none;
+		margin-top: 12px;
+	}
 	/*--------------------*\
 		Footer
 	\*--------------------*/
@@ -938,13 +952,13 @@ ul.arrow-list li:before {
 	#content .section {
 		padding-left: 4%;
 		padding-right: 2%;
-		width: 60%;
+		width: 58%;
 		float: left;
 	}
 	#sidebar-first .section {
 		padding-left: 2%;
 		padding-right: 4%;
-		width: 28%;
+		width: 30%;
 		float: right;
 	}
 	.half_left, .form_left {
@@ -955,8 +969,12 @@ ul.arrow-list li:before {
 		width: 48%;
 		float: right;
 	}
-
-
+	#sidebar-first .block-block {
+		width: 100%;
+		float: none;
+		margin-left: 0;
+		clear: both;
+	}
 	/*--------------------*\
 		Footer
 	\*--------------------*/
