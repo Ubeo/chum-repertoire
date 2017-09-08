@@ -11,7 +11,7 @@
 	#block-chum-main-menu {
 		position: absolute;
 		left: 150px;
-		top: 84px;
+		top: 66px;
 		z-index: 22;
 		display: inline-block;
 	}
@@ -64,7 +64,8 @@
 		text-decoration: none;
 		text-transform: none;
 	}
-	#block-chum-main-menu ul li ul li a:hover {
+	#block-chum-main-menu ul li ul li a:hover,
+	#block-chum-main-menu ul li ul li a.is-active{
 		border-bottom: 1px solid #0b4170;
 		color: #0b4170;
 		background: transparent;
@@ -129,7 +130,7 @@
 		padding: 8px 20px;
 	}
 	#term-1, #term-7, #term-6 {
-		float: left;
+		/*float: left;*/
 	}
 }
 

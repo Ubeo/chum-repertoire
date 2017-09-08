@@ -271,6 +271,27 @@ a:hover {
 /*--------------------*\
     Couleurs / styles
 \*--------------------*/
+#block-chum-local-tasks ul, #block-chum-local-tasks ul li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: inline;
+}
+#block-chum-local-tasks ul {
+	display: inline-block;
+	margin-bottom: 10px;
+}
+#block-chum-local-tasks ul li a {
+	display: inline-block;
+	font-size: 13px;
+	color: #161615;
+	padding: 5px 12px;
+	background: #fbfbfb;
+	background: -moz-linear-gradient(top, #fbfbfb 0%, #e6e6e6 100%);
+	background: -webkit-linear-gradient(top, #fbfbfb 0%,#e6e6e6 100%);
+	background: linear-gradient(to bottom, #fbfbfb 0%,#e6e6e6 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbfbfb', endColorstr='#e6e6e6',GradientType=0 );
+}
 .right {
 	float: right;
 }
@@ -389,25 +410,12 @@ a.all-link:before {
 	content: '\f061';
 	color: #161615;
 }
-
-
-
-
-
 /*--------------------*\
     User
 \*--------------------*/
 #block-chum-account-menu {
-	text-align: center;
-	background: #ccc;
+	display: none;
 }
-#block-chum-account-menu ul, #block-chum-account-menu ul li {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
-
-
 /*--------------------*\
     Head / Branding
 \*--------------------*/
@@ -427,6 +435,15 @@ a.all-link:before {
 	display: block;
 	float: left;
 	width: 104px;
+	height: 120px;
+	background: url("../images/logo.png") 0 0 no-repeat;
+	-webkit-background-size: 104px 120px;
+	-moz-background-size: 104px 120px;
+	-o-background-size: 104px 120px;
+	background-size: 104px 120px;
+}
+.site-logo img {
+	display: none;
 }
 #mobi_menu_btn {
 	display: block;
@@ -449,8 +466,6 @@ a.all-link:before {
 .site-name {
 	display: none;
 }
-
-
 /*--------------------*\
     Menu
 \*--------------------*/
@@ -494,7 +509,6 @@ a.all-link:before {
 #block-chum-main-menu a.is-active {
 	color: #f7f8cc;
 }
-
 /*--------------------*\
     Breadcrumb
 \*--------------------*/
@@ -636,8 +650,6 @@ a.all-link:before {
 .bx-wrapper .bx-controls-auto {
 	display: none;
 }
-
-
 /*--------------------*\
     Recherche
 \*--------------------*/
@@ -730,6 +742,9 @@ a.all-link:before {
 	cursor: pointer;
 	background: #d3d3d3;
 }
+#block-resultatsderecherche {
+	padding-top: 30px;
+}
 /*--------------------*\
     Fiches
 \*--------------------*/
@@ -783,6 +798,10 @@ article.node--type-fiches-repertoire .titre-section {
 /*--------------------*\
     Pages
 \*--------------------*/
+/*body.path-frontpage #block-chum-page-title,
+body.path-frontpage #block-chum-content {
+	display: none;
+}*/
 #content .section,
 #sidebar-first .section,
 .featured-top {
