@@ -66,6 +66,7 @@ class BarreRechercheBlock extends BlockBase {
   	            <form method='post' action='/' id='repertoire-form'>
 			        <input type='text' placeholder='RECHERCHE' id='mot-clef' name='mot-clef' value='" . $mot_clef . "' />
 			        <a href='javascript:;' id='form-submit'><i class=\"fa fa-search\" aria-hidden=\"true\"></i></a>
+                    <div class='before_labels'></div>
 			        <label><input type='checkbox' name='tous' value='tous' " . ( $tous ? 'checked="checked"' : '' ) . ">TOUS</label>
 			        ";
 

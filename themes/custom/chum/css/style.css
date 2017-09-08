@@ -268,8 +268,6 @@ a:hover {
 .tel_link {
 	cursor: text;
 }
-
-
 /*--------------------*\
     Couleurs / styles
 \*--------------------*/
@@ -280,7 +278,7 @@ p.right {
 	text-align: right;
 	float: none;
 }
-.block-title {
+#sidebar-first .block-title {
 	font: italic 600 12px/22px "Raleway", Arial, Helvetica, sans-serif;
 	margin: 0;
 	color: #ffffff;
@@ -666,7 +664,7 @@ a.all-link:before {
 	clear: both;
 }
 #block-barrederecherche #mot-clef {
-	width: 82%;
+	width: 80%;
 	float: left;
 }
 #repertoire-form #form-submit {
@@ -675,6 +673,9 @@ a.all-link:before {
 	display: inline-block;
 	float: left;
 	margin: 3px 0 0 4%;
+}
+.before_labels {
+	clear: both;
 }
 #block-barrederecherche label {
 	display: inline-block;
@@ -783,7 +784,8 @@ article.node--type-fiches-repertoire .titre-section {
     Pages
 \*--------------------*/
 #content .section,
-#sidebar-first .section {
+#sidebar-first .section,
+.featured-top {
 	padding-left: 7%;
 	padding-right: 7%;
 }
@@ -883,7 +885,8 @@ ul.arrow-list li:before {
 	#sidebar-first .section,
 	#block-pieddepagecontacts div,
 	#block-pieddepagesociauxetsignature div,
-	.site-footer h2 {
+	.site-footer h2,
+	.featured-top {
 		padding-left: 4%;
 		padding-right: 4%;
 	}
@@ -917,7 +920,7 @@ ul.arrow-list li:before {
 	}
 	#block-barrederecherche label {
 		clear: none;
-		margin-top: 12px;
+		margin-right: 18px;
 	}
 	/*--------------------*\
 		Footer
@@ -974,6 +977,25 @@ ul.arrow-list li:before {
 		float: none;
 		margin-left: 0;
 		clear: both;
+	}
+	#block-barrederecherche,
+	#block-ongletsderecherche .onglet {
+		width: 90%;
+		padding: 12px 5%;
+		margin-left: 0;
+	}
+	#block-ongletsderecherche ul {
+		width: 100%;
+		padding: 0;
+		margin-left: 0;
+	}
+	#block-ongletsderecherche ul li {
+		padding: 9px 3% 8px 8%;
+	}
+	#repertoire-form label:nth-child(4),
+	#repertoire-form label:nth-child(6) {
+		clear: left;
+		width: 210px;
 	}
 	/*--------------------*\
 		Footer

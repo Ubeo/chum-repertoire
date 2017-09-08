@@ -2,6 +2,9 @@
 	#header {
 		background: url("../images/bg-header.png") center bottom no-repeat;
 	}
+	/*--------------------*\
+		Menu
+	\*--------------------*/
 	#mobi_menu_btn {
 		display: none;
 	}
@@ -66,15 +69,67 @@
 		color: #0b4170;
 		background: transparent;
 	}
+	/*--------------------*\
+		Fiches
+	\*--------------------*/
+	.heures-ouverture {
+		padding-left: 60px;
+		padding-bottom: 8px;
+		background: url("../images/ico_clock.png") 0 2px no-repeat;
+	}
+	.localiser {
+		padding-left: 60px;
+		padding-bottom: 8px;
+		background: url("../images/ico_marker.png") 0 2px no-repeat;
+	}
+	.emplacement {
+		padding-left: 60px;
+		padding-bottom: 8px;
+		background: url("../images/ico_markers.png") 0 2px no-repeat;
+	}
+	.suggestions {
+		padding-left: 60px;
+		padding-bottom: 8px;
+		background: url("../images/ico_web.png") 0 2px no-repeat;
+	}
+	.contactez-nous {
+		padding-left: 60px;
+		padding-bottom: 8px;
+		background: url("../images/ico_phone.png") 0 2px no-repeat;
+	}
+	/*--------------------*\
+		Pages
+	\*--------------------*/
 	#block-barrederecherche {
-		width: 90%;
-		padding: 12px 5%;
+		display: block;
+		width: auto;
+		padding: 12px 20px;
+		border-top: none;
+		border-bottom: solid 22px #fff;
 		margin-left: 0;
 	}
+	#block-barrederecherche #mot-clef {
+		width: 30%;
+	}
+	#repertoire-form #form-submit {
+		margin: 3px 0 0 14px;
+	}
+	.before_labels {
+		display: none;
+	}
+	#repertoire-form label {
+		clear: none !important;
+		width: auto !important;
+		margin-left: 18px;
+		margin-right: 0;
+	}
 	#block-ongletsderecherche .onglet {
-		width: 90%;
-		padding: 8px 5%;
 		margin-left: 0;
+		width: auto;
+		padding: 8px 20px;
+	}
+	#term-1, #term-7, #term-6 {
+		float: left;
 	}
 }
 
@@ -90,20 +145,26 @@
 	#block-chum-branding,
 	#block-chum-breadcrumbs,
 	.layout-main-wrapper,
-	.site-footer__top {
+	.site-footer__top,
+	.featured-top {
 		max-width: 1003px;
 		margin-left: auto;
 		margin-right: auto;
 		padding-left: 0;
 		padding-right: 0;
 	}
+	#repertoire-form label {
+		margin-left: 28px;
+	}
 	#block-pieddepagecontacts h2, #block-pieddepagecontacts div {
 		padding-left: 0;
 		padding-right: 2%;
 	}
-	.footer2 #block-pieddepageliensrapides1 div,
-	.footer3 #block-pieddepageliensrapides2 div,
-	.footer4 #block-pieddepagesociauxetsignature div {
+
+
+	.footer2 #block-pieddepageliensrapides1 .content,
+	.footer3 #block-pieddepageliensrapides2 .content,
+	.footer4 #block-pieddepagesociauxetsignature .content {
 		border-left: 1px solid #cacac4;
 	}
 	#block-pieddepageliensrapides1 div {
