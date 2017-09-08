@@ -287,6 +287,9 @@ p.right {
 .block-title {
 	font: italic 600 12px/22px "Raleway", Arial, Helvetica, sans-serif;
 }
+.block.alert-info .block-title {
+	font: italic 600 9px/22px "Raleway", Arial,Helvetica, sans-serif;
+}
 .espacement .content {
 	padding: 10px 15px;
 }
@@ -304,6 +307,18 @@ p.right {
 }
 .bleu-fonce {
 	color: #0b4170;
+}
+.block.vert-pale .block-title {
+	background: #70b848;
+}
+.block.vert-fonce .block-title {
+	background: #1aa27b;
+}
+.block.aqua .block-title {
+	background: #29aae6;
+}
+.block.bleu-fonce .block-title {
+	background: #0b4170;
 }
 .bleu-degrade {
 	background: #224c71;
