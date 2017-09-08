@@ -2,10 +2,11 @@ jQuery(function($) {
     $("#mobi_menu_btn").click(function(){
         $("#block-chum-main-menu").slideToggle();
     });
-    /*$("#block-ongletsderecherche .onglet").click(function(){
-        $(this).next('ul').slideToggle('');
-    });*/
-    $("div.term-1").click(function(){
-        $("ul.term-1").slideToggle();
+    $(".tab-category").click(function(){
+        $(".tab-category").removeClass('tab_on');
+        $('.list-category').slideUp();
+        $(this).addClass('tab_on');
+        var _rel = $(this).attr('rel');
+        $('.list-category[rel='+_rel+']').slideToggle();
     });
 });

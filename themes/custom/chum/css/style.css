@@ -724,6 +724,9 @@ a.all-link:before {
 	background: linear-gradient(135deg, #224c71 0%, #1e3951 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#224c71', endColorstr='#1e3951', GradientType=1);
 }
+#block-ongletsderecherche .tab-category.tab_on {
+	pointer-events: none;
+}
 #block-ongletsderecherche ul {
 	display: none;
 	width: 116%;

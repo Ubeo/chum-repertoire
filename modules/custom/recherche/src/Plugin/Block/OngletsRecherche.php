@@ -27,7 +27,7 @@ class OngletsRecherche extends BlockBase {
 
             $html .= '<div class="onglets-wrapper clearfix">';
             foreach ( $liste_categories_principales as $categorie_principale ) {
-                $html .= '	<div class="term-' . $categorie_principale->tid . '">
+                $html .= '	<div class="tab-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '">
                                 <div class="onglet">' . $categorie_principale->name . '</div>';
                 $html .= '</div>';
             }
@@ -35,10 +35,10 @@ class OngletsRecherche extends BlockBase {
 			$aliasManager = \Drupal::service('path.alias_manager');
 		    foreach ( $liste_categories_principales as $categorie_principale ) {
 				$liste_enfants = $this->getChildCategories($categorie_principale->tid);
-				$html .= '	<div class="term-' . $categorie_principale->tid . '">
+				$html .= '	<div class="tab-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '">
   	                            <div class="onglet">' . $categorie_principale->name . '</div>';
 				if($liste_enfants) {
-					$html .= ' <ul class="term-' . $categorie_principale->tid . '">';
+					$html .= ' <ul class="list-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '">';
 					foreach ( $liste_enfants as $enfant ) {
 
 						$alias = $aliasManager->getAliasByPath('/taxonomy/term/' . $enfant->tid);
