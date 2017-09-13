@@ -27,14 +27,67 @@ class OngletsRecherche extends BlockBase {
 
             $html .= '<div class="onglets-wrapper clearfix">';
             foreach ( $liste_categories_principales as $categorie_principale ) {
-                $html .= '	<div class="tab-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '">
-                                <div class="tab-category onglet" rel="' . $categorie_principale->tid . '">' . $categorie_principale->name . '</div>';
+            	$class_on = $categorie_principale->tid == 1 ? "tab_on" : "";
+                $html .= '	<div class="tab-category term-' . $categorie_principale->tid .' rel="' . $categorie_principale->tid . '">
+                                <div class="tab-category onglet '. $class_on .'" rel="' . $categorie_principale->tid . '">' . $categorie_principale->name . '</div>';
                 $html .= '</div>';
             }
             $html .= '</div>';
-			$aliasManager = \Drupal::service('path.alias_manager');
+
 		    foreach ( $liste_categories_principales as $categorie_principale ) {
-				$liste_enfants = $this->getChildCategories($categorie_principale->tid);
+				$html .= '	<div class="tab-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '">
+  	                            <div class="tab-category onglet" rel="' . $categorie_principale->tid . '">' . $categorie_principale->name . '</div>';
+
+			    $nids = \Drupal::entityQuery('node')->condition('type','fiches_repertoire')->condition('field_categorie', $categorie_principale->tid, "=")->sort('title')->execute();
+			    $nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);
+
+				if($nodes) {
+					if ( $categorie_principale->tid == 1 ){
+						$html .= ' <ul class="list-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '" style="display:block;" >';
+					} else {
+						$html .= ' <ul class="list-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '">';
+					}
+
+					foreach ( $nodes as $node ) {
+
+						$alias = \Drupal::service('path.alias_manager')->getAliasByPath('/node/'.$node->id());
+						$html .= '<li><a href="' . $alias . '">' . $node->label() . '</a></li>';
+					}
+					$html .= '</ul>';
+				}
+
+				$html .= '</div>';
+			}
+		}
+
+		return [
+			'#markup' => $this->t( $html ),
+			'#cache'  => [
+				'max-age' => 0,
+			],
+		];
+	}
+
+	/*public function build() {
+
+		$html                         = '';
+		$liste_categories_principales = $this->getParentCategories();
+
+		if ( $liste_categories_principales ) {
+
+			$html .= '<div class="onglets-wrapper clearfix">';
+			foreach ( $liste_categories_principales as $categorie_principale ) {
+				$html .= '	<div class="tab-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '">
+                                <div class="tab-category onglet" rel="' . $categorie_principale->tid . '">' . $categorie_principale->name . '</div>';
+				$html .= '</div>';
+			}
+			$html .= '</div>';
+			$aliasManager = \Drupal::service('path.alias_manager');
+			foreach ( $liste_categories_principales as $categorie_principale ) {
+				$liste_enfants = $this->taxonomy_term_load($categorie_principale->tid);
+
+				//$nids = \Drupal::entityQuery('node')->condition('type','fiches_repertoire')->execute();
+				//$liste_enfants =  \Drupal\node\Entity\Node::loadMultiple($nids);
 				$html .= '	<div class="tab-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '">
   	                            <div class="tab-category onglet" rel="' . $categorie_principale->tid . '">' . $categorie_principale->name . '</div>';
 				if($liste_enfants) {
@@ -59,7 +112,7 @@ class OngletsRecherche extends BlockBase {
 				'max-age' => 0,
 			],
 		];
-	}
+	}*/
 
 	protected function getParentCategories() {
 		$language      = \Drupal::languageManager()->getCurrentLanguage()->getId();

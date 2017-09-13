@@ -196,11 +196,12 @@ select.error, input.error, textarea.error {
     Phone
 \*------------------------------------------------------------------------*/
 body { 
+	background: url("/sites/all/themes/chum/images/bg-molecule-new.jpg") no-repeat scroll 51% top transparent !important;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	line-height: 18px;
 	color: #636466;
-	background: #fff;
+	background-image: url(http://www.chumontreal.qc.ca/sites/default/files//bg-molecule-130206.jpg) !important;
 }
 h1 {
 	font-family: "Raleway", Arial, Helvetica, sans-serif;
