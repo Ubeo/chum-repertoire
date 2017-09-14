@@ -70,8 +70,28 @@ class ResultatsBlock extends BlockBase {
 		$categories_parents = $this->getParentCategories();
 		$tous               = \Drupal::request()->request->get( 'tous' );
 
+		$terms_id = [];
+
 		if ( isset( $_POST['tous'] ) && $_POST['tous'] == 'tous' ) {
 			$tous = true;
+		}
+
+		if ( isset( $_POST['cliniques'] ) && $_POST['cliniques'] == 1 ) {
+			$cliniques = true;
+
+		}
+
+
+		if ( $tous ){
+			$nids = \Drupal::entityQuery('node')->condition('type','fiches_repertoire')->condition('field_categorie', [1, 2, 3, 4, 5, 6] , "IN")->sort('title')->execute();
+			$nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);
+		}
+
+
+		if ( $nodes ){
+			foreach ( $nodes as $node ){
+				echo $node->label();
+			}
 		}
 
 
