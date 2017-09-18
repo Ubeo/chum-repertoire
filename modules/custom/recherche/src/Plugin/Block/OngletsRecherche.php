@@ -52,7 +52,13 @@ class OngletsRecherche extends BlockBase {
 
 						$alias = \Drupal::service('path.alias_manager')->getAliasByPath('/node/'.$node->id());
 						$html .= '<li><a href="' . $alias . '">' . $node->label() . '</a></li>';
+
 					}
+
+					if ( count($nodes) % 2 != 0 ) { //Si c'est impaire on ajoute un li
+						$html .= "<li>&nbsp;</li>";
+					}
+
 					$html .= '</ul>';
 				}
 
@@ -67,52 +73,6 @@ class OngletsRecherche extends BlockBase {
 			],
 		];
 	}
-
-	/*public function build() {
-
-		$html                         = '';
-		$liste_categories_principales = $this->getParentCategories();
-
-		if ( $liste_categories_principales ) {
-
-			$html .= '<div class="onglets-wrapper clearfix">';
-			foreach ( $liste_categories_principales as $categorie_principale ) {
-				$html .= '	<div class="tab-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '">
-                                <div class="tab-category onglet" rel="' . $categorie_principale->tid . '">' . $categorie_principale->name . '</div>';
-				$html .= '</div>';
-			}
-			$html .= '</div>';
-			$aliasManager = \Drupal::service('path.alias_manager');
-			foreach ( $liste_categories_principales as $categorie_principale ) {
-				$liste_enfants = $this->taxonomy_term_load($categorie_principale->tid);
-
-				//$nids = \Drupal::entityQuery('node')->condition('type','fiches_repertoire')->execute();
-				//$liste_enfants =  \Drupal\node\Entity\Node::loadMultiple($nids);
-				$html .= '	<div class="tab-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '">
-  	                            <div class="tab-category onglet" rel="' . $categorie_principale->tid . '">' . $categorie_principale->name . '</div>';
-				if($liste_enfants) {
-					$html .= ' <ul class="list-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '">';
-					foreach ( $liste_enfants as $enfant ) {
-
-						$alias = $aliasManager->getAliasByPath('/taxonomy/term/' . $enfant->tid);
-						$html .= '<li><a href="' . $alias . '">' . $enfant->name . '</a></li>';
-					}
-					$html .= '</ul>';
-				}
-
-
-				$html .= '</div>';
-			}
-
-		}
-
-		return [
-			'#markup' => $this->t( $html ),
-			'#cache'  => [
-				'max-age' => 0,
-			],
-		];
-	}*/
 
 	protected function getParentCategories() {
 		$language      = \Drupal::languageManager()->getCurrentLanguage()->getId();
