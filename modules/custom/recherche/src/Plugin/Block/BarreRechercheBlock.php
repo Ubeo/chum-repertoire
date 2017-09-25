@@ -56,14 +56,14 @@ class BarreRechercheBlock extends BlockBase {
 			foreach ( $categories_parents as $categories_parent ) {
 				$slug_temp = preg_replace('/[^a-zA-Z0-9]/', '_', mb_strtolower($categories_parent->name));
 				if(isset($_POST[$slug_temp]) && (int)$_POST[$slug_temp] == $categories_parent->tid) {
-					$$slug_temp = true;
+					$slug_temp = true;
 				}
 			}
 		}
 
 
 		$html = "
-  	            <form method='post' action='/' id='repertoire-form'>
+  	            <form method='post' action='/recherche' id='repertoire-form'>
 			        <input type='text' placeholder='RECHERCHE' id='mot-clef' name='mot-clef' value='" . $mot_clef . "' />
 			        <a href='javascript:;' id='form-submit'><i class=\"fa fa-search\" aria-hidden=\"true\"></i></a>
                     <div class='before_labels'></div>
