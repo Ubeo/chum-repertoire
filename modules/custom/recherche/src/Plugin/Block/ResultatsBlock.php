@@ -66,6 +66,7 @@ class ResultatsBlock extends BlockBase {
 
 		$terms_id = [];
 		$tax_nid  = [];
+		$group = false;
 
 		if ( isset( $_POST['tous'] ) && $_POST['tous'] == 'tous' ) {
 			$terms_id = [ 1, 6, 7 ];
@@ -83,7 +84,7 @@ class ResultatsBlock extends BlockBase {
 			}
 		}
 
-		if ( isset( $_POST['unit__s_de_soins'] ) && $_POST['unit__s_de_soins'] == 6 ) {
+		if ( isset( $_POST['unitsdesoins'] ) && $_POST['unitsdesoins'] == 6 ) {
 			if ( ! in_array( 6, $terms_id ) ) {
 				$terms_id[] = 6;
 			}
@@ -98,6 +99,7 @@ class ResultatsBlock extends BlockBase {
 		if ( count( $terms_id ) <= 0 ) {
 			$terms_id = [ 1, 6, 7 ];
 		}
+
 
 
 		if ( count( $terms_id ) > 0 ) {
