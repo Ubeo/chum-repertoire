@@ -69,7 +69,7 @@ class BarreRechercheBlock extends BlockBase {
 			        <input type='text' placeholder='RECHERCHE' id='mot-clef' name='mot-clef' value='" . $mot_clef . "' />
 			        <a href='javascript:;' id='form-submit'><i class=\"fa fa-search\" aria-hidden=\"true\"></i></a>
                     <div class='before_labels'></div>
-			        <label><input type='checkbox' name='tous' value='tous' " . ( $tous ? 'checked="checked"' : '' ) . ">TOUS</label>
+			        <label><input type='checkbox' name='tous' value='tous' " . ( $tous ? 'checked="checked"' : '' ) . " class='check-choices'>TOUS</label>
 			        ";
 
 		if ( $categories_parents ) {
@@ -82,7 +82,7 @@ class BarreRechercheBlock extends BlockBase {
 				} else {
 					$checked = '';
 				}
-				$html .= "<label><input type='checkbox' name='" . $slug_temp . "' value='" . $categories_parent->tid . "' $checked >" . mb_strtoupper($categories_parent->name) . "</label>";
+				$html .= "<label><input type='checkbox' name='" . $slug_temp . "' value='" . $categories_parent->tid . "' $checked  class='check-choices'>" . mb_strtoupper($categories_parent->name) . "</label>";
 			}
 		}
 

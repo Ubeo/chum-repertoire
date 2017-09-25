@@ -108,6 +108,8 @@ class ResultatsBlock extends BlockBase {
 
 			if ( $mot_cle ) {
 
+				$mot_cle = $database->escapeLike($mot_cle);
+
 				// On cherche le mot-clé dans le titre
 				$group = $query->orConditionGroup()
 				               ->condition( 'title', $mot_cle, 'CONTAINS' );
@@ -115,7 +117,7 @@ class ResultatsBlock extends BlockBase {
 				$group->condition( 'body', $mot_cle, 'CONTAINS' );
 
 				// On cherche si une taxonomie contient le mot-clé recherché
-				$taxonomy_results = $database->query( "SELECT * FROM dpr8_taxonomy_term_field_data WHERE `name` LIKE '%" . $database->escapeLike( $mot_cle ) . "%'" );
+				$taxonomy_results = $database->query( "SELECT * FROM dpr8_taxonomy_term_field_data WHERE `name` LIKE '%" . $mot_cle . "%'" );
 				if ( $taxonomy_results ) {
 					while ( $row = $taxonomy_results->fetchAssoc() ) {
 						$tax_nid[] = $row['tid'];
@@ -129,7 +131,9 @@ class ResultatsBlock extends BlockBase {
 
 			}
 
-			$query->condition( 'type', 'fiches_repertoire' )->condition( 'field_categorie', $terms_id, "IN" );
+			$query->condition( 'type', 'fiches_repertoire' )
+			      ->condition( 'field_categorie', $terms_id, "IN" )
+			      ->condition( 'status', 1, "=" );
 
 			// Si le groupe OR est présent, on l'ajoute
 			if ( $group ) {
