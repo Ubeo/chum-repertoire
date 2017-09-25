@@ -35,8 +35,9 @@ class OngletsRecherche extends BlockBase {
             $html .= '</div>';
 
 		    foreach ( $liste_categories_principales as $categorie_principale ) {
+                $class_on = $categorie_principale->tid == 1 ? "tab_on" : "";
 				$html .= '	<div class="tab-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '">
-  	                            <div class="tab-category onglet" rel="' . $categorie_principale->tid . '">' . $categorie_principale->name . '</div>';
+  	                            <div class="tab-category onglet '. $class_on .'" rel="' . $categorie_principale->tid . '">' . $categorie_principale->name . '</div>';
 
 			    $nids = \Drupal::entityQuery('node')->condition('type','fiches_repertoire')->condition('field_categorie', $categorie_principale->tid, "IN")->condition('status', 1)->sort('title')->execute();
 			    $nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);

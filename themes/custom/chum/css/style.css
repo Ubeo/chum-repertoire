@@ -687,6 +687,7 @@ a.all-link:before {
 }
 #block-barrederecherche #mot-clef {
 	width: 80%;
+	max-width: 320px;
 	float: left;
 }
 #repertoire-form #form-submit {
@@ -744,7 +745,7 @@ a.all-link:before {
 	padding-left: 0;
 	margin-bottom: 0;
 	list-style: none;
-	pointer-events: none;
+	/*pointer-events: none;*/
 }
 #block-ongletsderecherche ul li {
 	display: block;
@@ -756,11 +757,10 @@ a.all-link:before {
 	margin-bottom: 0;
 	border-top: solid 1px #d7d7d7;
 	border-bottom: solid 1px #c4c4c4;
-	cursor: pointer;
 	background: #d3d3d3;
 }
 #block-ongletsderecherche ul li a {
-	pointer-events: all;
+	/*pointer-events: all;*/
 }
 #block-resultatsderecherche {
 	padding-top: 30px;
