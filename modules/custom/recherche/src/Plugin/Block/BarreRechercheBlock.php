@@ -54,9 +54,11 @@ class BarreRechercheBlock extends BlockBase {
 
 		if ( $categories_parents ) {
 			foreach ( $categories_parents as $categories_parent ) {
-				$slug_temp = preg_replace('/[^a-zA-Z0-9]/', '_', mb_strtolower($categories_parent->name));
+				$alias = iconv('UTF-8', 'ASCII//TRANSLIT', $categories_parent->name);
+				$slug_temp = preg_replace('/[^a-zA-Z0-9]/', '', $alias);
+				$slug_temp = strtolower($slug_temp);
 				if(isset($_POST[$slug_temp]) && (int)$_POST[$slug_temp] == $categories_parent->tid) {
-					$slug_temp = true;
+					$$slug_temp = true;
 				}
 			}
 		}
@@ -72,7 +74,9 @@ class BarreRechercheBlock extends BlockBase {
 
 		if ( $categories_parents ) {
 			foreach ( $categories_parents as $categories_parent ) {
-				$slug_temp = preg_replace('/[^a-zA-Z0-9]/', '_', mb_strtolower($categories_parent->name));
+				$alias = iconv('UTF-8', 'ASCII//TRANSLIT', $categories_parent->name);
+				$slug_temp = preg_replace('/[^a-zA-Z0-9]/', '', $alias);
+				$slug_temp = strtolower($slug_temp);
 				if($$slug_temp) {
 					$checked = "checked='checked'";
 				} else {

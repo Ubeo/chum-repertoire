@@ -48,12 +48,13 @@ class ResultatsBlock extends BlockBase {
 	}
 
 
-	public function getNodeByTermId($term_id) {
-	  $query = \Drupal::database()->select('taxonomy_index', 'ti');
-	  $query->fields('ti', ['nid']);
-	  $query->condition('ti.tid', $term_id);
-	  $nodes = $query->execute()->fetchAssoc();
-	  return $nodes;
+	public function getNodeByTermId( $term_id ) {
+		$query = \Drupal::database()->select( 'taxonomy_index', 'ti' );
+		$query->fields( 'ti', [ 'nid' ] );
+		$query->condition( 'ti.tid', $term_id );
+		$nodes = $query->execute()->fetchAssoc();
+
+		return $nodes;
 	}
 
 
@@ -61,65 +62,94 @@ class ResultatsBlock extends BlockBase {
 	 * {@inheritdoc}
 	 */
 	public function build() {
-		$html = "<p style='color:red'>Résultats de recherche. " . time() . "</p>";
-		/*$result = db_select('node', 'n')->fields('n')->execute()->fetchAll();
-		print '<pre>';
-		print_r($result);
-		print '</pre>';*/
-
-		$categories_parents = $this->getParentCategories();
-		$tous               = \Drupal::request()->request->get( 'tous' );
+		$html = "";
 
 		$terms_id = [];
+		$tax_nid  = [];
 
 		if ( isset( $_POST['tous'] ) && $_POST['tous'] == 'tous' ) {
-			$tous = true;
+			$terms_id = [ 1, 6, 7 ];
 		}
 
 		if ( isset( $_POST['cliniques'] ) && $_POST['cliniques'] == 1 ) {
-			$cliniques = true;
-
-		}
-
-
-		if ( $tous ){
-			$nids = \Drupal::entityQuery('node')->condition('type','fiches_repertoire')->condition('field_categorie', [1, 2, 3, 4, 5, 6] , "IN")->sort('title')->execute();
-			$nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);
-		}
-
-
-		if ( $nodes ){
-			foreach ( $nodes as $node ){
-				echo $node->label();
+			if ( ! in_array( 1, $terms_id ) ) {
+				$terms_id[] = 1;
 			}
 		}
 
+		if ( isset( $_POST['services'] ) && $_POST['services'] == 7 ) {
+			if ( ! in_array( 7, $terms_id ) ) {
+				$terms_id[] = 7;
+			}
+		}
 
-		$liste_subcats = array();
-		if ( $categories_parents ) {
-			foreach ( $categories_parents as $categories_parent ) {
+		if ( isset( $_POST['unit__s_de_soins'] ) && $_POST['unit__s_de_soins'] == 6 ) {
+			if ( ! in_array( 6, $terms_id ) ) {
+				$terms_id[] = 6;
+			}
+		}
 
-				$slug_temp = preg_replace('/[^a-zA-Z0-9]/', '_', mb_strtolower($categories_parent->name));
-				if ( ( isset( $_POST[ $slug_temp ] ) && (int) $_POST[ $slug_temp ] == $categories_parent->tid ) || $tous ) {
-					$liste_subcats[] = $categories_parent->tid;
-					$childs = $this->getChildCategories( $categories_parent->tid );
-					if ( $childs ) {
-						foreach ( $childs as $child ) {
-							$liste_subcats[] = $child->tid;
-						}
+		if ( isset( $_POST['mot-clef'] ) && ! empty( $_POST['mot-clef'] ) ) {
+			$mot_cle = $_POST['mot-clef'];
+		} else {
+			$mot_cle = false;
+		}
 
+		if ( count( $terms_id ) <= 0 ) {
+			$terms_id = [ 1, 6, 7 ];
+		}
+
+
+		if ( count( $terms_id ) > 0 ) {
+
+			$query    = \Drupal::entityQuery( 'node' );
+			$database = \Drupal::database();
+
+
+			if ( $mot_cle ) {
+
+				// On cherche le mot-clé dans le titre
+				$group = $query->orConditionGroup()
+				               ->condition( 'title', $mot_cle, 'CONTAINS' );
+
+				$group->condition( 'body', $mot_cle, 'CONTAINS' );
+
+				// On cherche si une taxonomie contient le mot-clé recherché
+				$taxonomy_results = $database->query( "SELECT * FROM dpr8_taxonomy_term_field_data WHERE `name` LIKE '%" . $database->escapeLike( $mot_cle ) . "%'" );
+				if ( $taxonomy_results ) {
+					while ( $row = $taxonomy_results->fetchAssoc() ) {
+						$tax_nid[] = $row['tid'];
 					}
 				}
+
+				// Si une taxonomie correspond, on l'ajout à la recherche
+				if ( $tax_nid ) {
+					$group->condition( 'field_mots_cles', $tax_nid, 'IN' );
+				}
+
+			}
+
+			$query->condition( 'type', 'fiches_repertoire' )->condition( 'field_categorie', $terms_id, "IN" );
+
+			// Si le groupe OR est présent, on l'ajoute
+			if ( $group ) {
+				$query->condition( $group );
+			}
+
+			// On éxécute la requête
+			$nids = $query->sort( 'title' )->execute();
+
+			if ( $nids ) {
+				$nodes = \Drupal\node\Entity\Node::loadMultiple( $nids );
+				foreach ( $nodes as $node_content ) {
+					$title = $node_content->getTitle();
+					$alias = \Drupal::service('path.alias_manager')->getAliasByPath('/node/'.$node_content->id());
+					$html .= '<h3><a href="' . $alias . '">' . $title . '</a></h3>';
+				}
+			} else {
+				$html .= "<p>Aucun résultat</p>";
 			}
 		}
-
-
-		foreach ( $liste_subcats as $subcat ) {
-			print '<pre>';
-			print_r($this->getNodeByTermId($subcat));
-			print '</pre>';
-		}
-
 
 
 		return [
