@@ -71,7 +71,9 @@
           {% if node.field_banniere is not empty %}
             <img src="{{ file_url(node.field_banniere.entity.uri.value)}}" />
           {% endif %}
-          {{ page.breadcrumb }}
+          {% if node.field_banniere is empty %}
+              <img src="/{{ directory }}/images/banniere_accueil_repertoire_cliniques.jpg" />
+            {% endif %}
           {% if page.featured_top %}
             <div class="featured-top">
               <aside class="featured-top__inner section layout-container clearfix" role="complementary">
@@ -79,6 +81,7 @@
               </aside>
             </div>
           {% endif %}
+          {{ page.breadcrumb }}
         <main id="content" class="column main-content" role="main">
           <section class="section">
             <a id="main-content" tabindex="-1"></a>
