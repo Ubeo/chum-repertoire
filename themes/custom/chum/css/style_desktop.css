@@ -184,6 +184,9 @@
 		border-bottom: none;
 		float: left;
 	}
+	#block-ongletsderecherche ul li a {
+		display: inline;
+	}
 }
 @media screen and (min-width: 1024px) {
 	#block-chum-main-menu {

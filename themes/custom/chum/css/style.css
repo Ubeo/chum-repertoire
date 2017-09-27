@@ -664,9 +664,9 @@ a.all-link:before {
     Recherche
 \*--------------------*/
 #block-barrederecherche {
-	width: 102%;
+	/*width: 102%;*/
 	padding: 12px 7%;
-	margin-left: -8%;
+	/*margin-left: -8%;*/
 	border-top: solid 12px #eeeeee;
 	border-bottom: solid 12px #eeeeee;
 	background: #224c71;
@@ -760,7 +760,7 @@ a.all-link:before {
 	background: #d3d3d3;
 }
 #block-ongletsderecherche ul li a {
-	/*pointer-events: all;*/
+	display: block;
 }
 #block-resultatsderecherche {
 	padding-top: 30px;
@@ -938,9 +938,7 @@ ul.arrow-list li:before {
 		right: 4%;
 	}
 	#block-barrederecherche {
-		width: 100%;
 		padding: 12px 5%;
-		margin-left: -5%;
 	}
 	#block-ongletsderecherche .onglet {
 		width: 100%;
