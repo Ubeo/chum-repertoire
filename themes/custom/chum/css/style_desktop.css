@@ -146,6 +146,8 @@
 	#block-ongletsderecherche .onglets-wrapper .term-7,
 	#block-ongletsderecherche .onglets-wrapper .term-6 {
 		float: left;
+		border-top: none;
+		border-right: solid 2px #fff;
 	}
 	#block-ongletsderecherche .onglets-wrapper .onglet {
 		display: block;
