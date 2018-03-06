@@ -106,6 +106,8 @@
 	/*--------------------*\
 		Pages
 	\*--------------------*/
+	
+	
 	#block-barrederecherche {
 		display: block;
 		width: auto;
@@ -135,7 +137,10 @@
 	}
 	#block-ongletsderecherche .onglet {
 		display: none;
+		margin-right: 3px;
+		
 	}
+
 	#block-ongletsderecherche .onglet.tab_on {
 		color: #004071;
 		border-top: solid 1px #e9e9e9;
@@ -143,11 +148,9 @@
 		background: #e9e9e9;
 	}
 	#block-ongletsderecherche .onglets-wrapper .term-1,
-	#block-ongletsderecherche .onglets-wrapper .term-7,
+	#block-ongletsderecherche .onglets-wrapper .term-7,   
 	#block-ongletsderecherche .onglets-wrapper .term-6 {
 		float: left;
-		border-top: none;
-		border-right: solid 2px #fff;
 	}
 	#block-ongletsderecherche .onglets-wrapper .onglet {
 		display: block;
@@ -189,6 +192,7 @@
 	#block-ongletsderecherche ul li a {
 		display: inline;
 	}
+	
 }
 @media screen and (min-width: 1024px) {
 	#block-chum-main-menu {

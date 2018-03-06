@@ -3,3 +3,43 @@
  * @file
  * Code pour le module de recherche
  */
+
+function chum_preprocess_page_title(&$variables) {
+
+	$current_title = $variables['title'];
+
+  // Load the node entity from current route
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+
+  	if($node->bundle() == "fiches_repertoire") {
+
+  		$categories = $node->get('field_categorie')->getValue();
+
+	    if(is_array($categories)) {
+            $main_cat = false;
+            foreach ( $categories as $category ) {
+                switch ($category['target_id']) {
+                    case 1:
+                        $main_cat = 1;
+                        $main_cat_slug = 'cliniques';
+                        $main_cat_title = 'Clinique';
+                        break;
+                    case 6:
+                        $main_cat = 6;
+                        $main_cat_slug = 'unitsdesoins';
+                        $main_cat_title = 'Unité de soins';
+                        break;
+                    case 7:
+                        $main_cat = 7;
+                        $main_cat_slug = 'services';
+                        $main_cat_title = 'Service';
+                        break;
+                }
+            }
+        }
+
+	    // Set the page title
+	    $variables['title'] = strip_tags($current_title ) . ' - ' . $main_cat_title;
+    }
+  }
+}

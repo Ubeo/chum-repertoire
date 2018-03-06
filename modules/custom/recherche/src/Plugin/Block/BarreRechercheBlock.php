@@ -82,7 +82,7 @@ class BarreRechercheBlock extends BlockBase {
 				} else {
 					$checked = '';
 				}
-				$html .= "<label><input type='checkbox' name='" . $slug_temp . "' value='" . $categories_parent->tid . "' $checked  class='check-choices'>" . mb_strtoupper($categories_parent->name) . "</label>";
+				$html .= "<label class='cat-" . $slug_temp . "'><input type='checkbox' name='" . $slug_temp . "' value='" . $categories_parent->tid . "' $checked  class='check-choices'>" . mb_strtoupper($categories_parent->name) . "</label>";
 			}
 		}
 

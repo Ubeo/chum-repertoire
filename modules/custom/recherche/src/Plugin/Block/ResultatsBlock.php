@@ -148,9 +148,37 @@ class ResultatsBlock extends BlockBase {
 			if ( $nids ) {
 				$nodes = \Drupal\node\Entity\Node::loadMultiple( $nids );
 				foreach ( $nodes as $node_content ) {
+
+					$categories = $node_content->get('field_categorie')->getValue();
+
+
+					if(is_array($categories)) {
+						$main_cat = false;
+						foreach ( $categories as $category ) {
+							switch ($category['target_id']) {
+								case 1:
+									$main_cat = 1;
+									$main_cat_slug = 'cliniques';
+									$main_cat_title = 'Clinique';
+									break;
+								case 6:
+									$main_cat = 6;
+									$main_cat_slug = 'unitsdesoins';
+									$main_cat_title = 'Unité de soins';
+									break;
+								case 7:
+									$main_cat = 7;
+									$main_cat_slug = 'services';
+									$main_cat_title = 'Service';
+									break;
+							}
+						}
+					}
+
+
 					$title = $node_content->getTitle();
 					$alias = \Drupal::service('path.alias_manager')->getAliasByPath('/node/'.$node_content->id());
-					$html .= '<h3><a href="' . $alias . '">' . $title . '</a></h3>';
+					$html .= '<h3><span class="cat-' . $main_cat_slug . '"></span><a href="' . $alias . '">' . $title . ' - ' . $main_cat_title . '</a></h3>';
 				}
 			} else {
 				$html .= "<p>Aucun résultat</p>";

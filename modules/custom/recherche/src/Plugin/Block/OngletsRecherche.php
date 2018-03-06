@@ -26,9 +26,8 @@ class OngletsRecherche extends BlockBase {
 		if ( $liste_categories_principales ) {
 
             $html .= '<div class="onglets-wrapper clearfix">';
-
             foreach ( $liste_categories_principales as $categorie_principale ) {
-            	$class_on = $categorie_principale->tid == 99 ? "tab_on" : "";
+            	$class_on = $categorie_principale->tid == 1 ? "tab_on" : "";
                 $html .= '	<div class="tab-category term-' . $categorie_principale->tid .' rel="' . $categorie_principale->tid . '">
                                 <div class="tab-category onglet '. $class_on .'" rel="' . $categorie_principale->tid . '">' . $categorie_principale->name . '</div>';
                 $html .= '</div>';
@@ -36,7 +35,7 @@ class OngletsRecherche extends BlockBase {
             $html .= '</div>';
 
 		    foreach ( $liste_categories_principales as $categorie_principale ) {
-                $class_on = $categorie_principale->tid == 99 ? "tab_on" : "";
+                $class_on = $categorie_principale->tid == 1 ? "tab_on" : "";
 				$html .= '	<div class="tab-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '">
   	                            <div class="tab-category onglet '. $class_on .'" rel="' . $categorie_principale->tid . '">' . $categorie_principale->name . '</div>';
 
@@ -44,15 +43,11 @@ class OngletsRecherche extends BlockBase {
 			    $nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);
 
 				if($nodes) {
-
-					/*if ( $categorie_principale->tid == 1 ){
+					if ( $categorie_principale->tid == 1 ){
 						$html .= ' <ul class="list-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '" style="display:block;" >';
 					} else {
 						$html .= ' <ul class="list-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '">';
-					}*/
-                    $html .= ' <ul class="list-category term-' . $categorie_principale->tid . '" rel="' . $categorie_principale->tid . '">';
-
-
+					}
 
 					foreach ( $nodes as $node ) {
 
