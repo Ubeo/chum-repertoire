@@ -685,6 +685,31 @@ a.all-link:before {
 #repertoire-form:after {
 	clear: both;
 }
+#repertoire-form .cat-cliniques {
+	color: #71cce5;
+}
+#repertoire-form .cat-services {
+	color: #13b495;
+}
+#repertoire-form .cat-unitsdesoins {
+	color: #a3cc4a;
+}
+#block-resultatsderecherche h3 span {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	border-top: solid 3px #fff;
+	margin-right: 8px;
+}
+#block-resultatsderecherche h3 span.cat-cliniques {
+	background: #71cce5;
+}
+#block-resultatsderecherche h3 span.cat-services {
+	background: #13b495;
+}
+#block-resultatsderecherche h3 span.cat-unitsdesoins {
+	background: #a3cc4a;
+}
 #block-barrederecherche #mot-clef {
 	width: 80%;
 	max-width: 320px;
