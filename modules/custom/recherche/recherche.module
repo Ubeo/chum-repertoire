@@ -10,6 +10,7 @@ function chum_preprocess_page_title(&$variables) {
 
   // Load the node entity from current route
   if ($node = \Drupal::routeMatch()->getParameter('node')) {
+  	$current_title = $node->getTitle();
 
   	if($node->bundle() == "fiches_repertoire") {
 
